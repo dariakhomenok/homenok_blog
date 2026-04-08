@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %} Default {% endblock title %}</title>
+    <link rel = "stylesheet" href="{% static "styles.css" %}">
+</head>
+<body>
+    <div id="wrapper">
+	<div id="header">
+		<div id="menu">
+			<a href="/add_user"> Регистрация пользователя </a> |
+            <a href="/users"> Пользователи </a>
+		</div>
+	</div>
+	<div id="container">
+        <div id="sidebar">
+            
+		</div>
+		<div id="content">
+				{% block content%}content{% endblock content %}
+		</div>
+	</div>
+	<div id="footer">
+		
+	</div>
+</div>
+    
+</body>
+</html>

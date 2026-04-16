@@ -2,7 +2,7 @@
 {% block title %} Регистрация пользователя{% endblock title %}
 {% block content %}
 <h1> Регистрация пользователя </h1>
-    <form  action="/add_user/" method="post">
+    <form method="post">
         {% csrf_token %}
         {{ form.as_p }}
         <input type="submit" value="Создать">

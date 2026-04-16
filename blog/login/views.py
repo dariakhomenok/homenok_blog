@@ -16,3 +16,14 @@ def add_user(request):
     else: 
         form = UserForm()
         return render(request, "add_user.html", {'form': form})
+
+#гл страница
+def index(request):
+    return render(request, 'index.html')
+
+#авторизация
+def login(request):
+    if request.method=="get":
+        return render(request, 'login.html')
+        else:
+            return redirect('/')

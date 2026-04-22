@@ -1,5 +1,6 @@
 from django.shortcuts import redirect, render
 from .models import User
+# from .models import Role
 
 def login_required(func):
     def wrapper(request, *args, **kwargs):
@@ -7,10 +8,6 @@ def login_required(func):
             return redirect('/login')
         return func(request, *args, **kwargs)
     return wrapper
-
-@login_required
-def for_authorized(request):
-    return render(request, 'page_for_authorized.html')
 
 def is_director(func):
 
@@ -22,12 +19,8 @@ def is_director(func):
             if user.role.id == 1:
                 return func(request, *args, **kwargs)
             else:
-                message = 'Пользователь должен быть Менеджером'
+                message = 'Пользователь должен быть Директором'
         else:
             message = 'Пользователь не найден в базе'
         return render(request, 'error.html', {'message': message})
     return wrapper
-
-@is_director
-def for_director(request):
-    return render(request, 'page_for_director.html')
